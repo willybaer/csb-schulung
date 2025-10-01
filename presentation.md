@@ -82,11 +82,12 @@
 
 ---
 
-### **Tag 2: Fortgeschrittene Konzepte & Ökosystem**
+### **Tag 2: Fortgeschrittene Konzepte, Echtzeit-Kommunikation & Ökosystem**
 
 **Gesamtdauer: 6 Stunden (inkl. Pausen)**
 
-**Block 1: Daten von außen holen & Global State (09:00 - 10:30)**
+**Block 1: Daten von außen holen & Global State & Professionelles Data Fetching mit React Query (oder TanStack Query) (09:00 - 10:30)**
+*(Unverändert)*
 *   **Rückblick & Fragen zu Tag 1.**
 *   **Kommunikation mit dem Backend: REST-APIs und `fetch`**
     *   Was ist eine API? Was ist REST?
@@ -98,48 +99,49 @@
     *   Lösung: Globaler State, der für alle Komponenten zugänglich ist.
     *   Einführung in **Zustand** (Zustand): Einfacher als Redux, sehr beliebt.
     *   Praxis: Den Todo-State aus Tag 1 in einen Zustand-Store migrieren.
+     *   Probleme mit `fetch` + `useState`/`useEffect`: Loading-States, Error-Handling, Caching, Background Updates.
+    *   Lösung: Einführung in `useQuery` Hook.
+    *   Praxis: Die `fetch`-Logik für die Todos durch React Query ersetzen – wird viel einfacher und robuster.
 
 **⏸️ Kurze Pause (10:30 - 10:45)**
 
-**Block 2: Routing & Navigation (10:45 - 12:00)**
-*   **Routing in einer SPA: React Router**
-    *   Problem: Wie macht man "Seiten" in einer Single-Page-App?
-    *   Konzept: Client-Side Routing.
-    *   Praxis:
-        *   Router einrichten (`<BrowserRouter>`).
-        *   Routen definieren (`<Routes>`, `<Route>`).
-        *   Links navigieren (`<Link>`).
-        *   Eine "About"-Seite und eine "Todo"-Seite erstellen.
+**Block 2: Echtzeit-Kommunikation mit WebSockets (10:45 - 12:00)**
+*   **Von Request/Response zu Echtzeit:**
+    *   **Problem von REST:** Client muss immer nachfragen ("Polling"). Nicht geeignet für Live-Daten (Chat, Live-Updates, Collaboration).
+    *   **Lösung:** WebSockets - Eine persistente, bidirektionale Verbindung zwischen Client und Server.
+*   **WebSockets Konzept:**
+    *   Handshake zu Beginn, dann offene Verbindung.
+    *   Server kann Daten "pushen", ohne dass der Client fragt.
+    *   Ereignis-basiert: `onopen`, `onmessage`, `onclose`, `onerror`.
+*   **Praxis in React:**
+    *   WebSocket Verbindung in einer Komponente mit `useEffect` aufbauen.
+    *   Nachrichten vom Server mit `onmessage` empfangen und im State (oder Zustand-Store) speichern.
+    *   Nachrichten mit `socket.send()` an den Server senden.
+*   **Live-Demo:**
+    *   Einfacher Chat oder Live-Todo-Liste, die von mehreren Clients gleichzeitig gesehen wird (z.B. mit einem öffentlichen WebSocket Test-Server).
+*   **Wichtiger Hinweis zu Production:**
+    *   Für komplexe Anwendungen Bibliotheken wie `socket.io-client` verwenden, die Reconnect-Logik und Fallbacks bieten.
 
 **🍕 Mittagspause (12:00 - 13:00)**
 
-**Block 3: Best Practices für die Praxis (13:00 - 14:30)**
-*   **Professionelles Data Fetching mit React Query (oder TanStack Query)**
-    *   Probleme mit `fetch` + `useState`/`useEffect`: Loading-States, Error-Handling, Caching, Background Updates.
+**Block 3: Routing & Best Practices (13:00 - 14:30)**
+*(Angepasst, da WebSockets nun einen eigenen Block haben)*
+*   **Routing in einer SPA: React Router**
+    *   Problem: Wie macht man "Seiten" in einer Single-Page-App?
+    *   Konzept: Client-Side Routing.
+    *   Praxis: Router einrichten (`<BrowserRouter>`), Routen definieren (`<Routes>`, `<Route>`), Links navigieren (`<Link>`).
+*   **Professionelles Data Fetching mit React Query**
+    *   Probleme mit `fetch` + `useState`/`useEffect`: Loading-States, Error-Handling, Caching.
     *   Lösung: Einführung in `useQuery` Hook.
-    *   Praxis: Die `fetch`-Logik für die Todos durch React Query ersetzen – wird viel einfacher und robuster.
+    *   Praxis: Die `fetch`-Logik für die Todos durch React Query ersetzen.
 *   **Das CORS-Problem verstehen**
-    *   Was ist CORS? (Same-Origin-Policy des Browsers).
-    *   Wann tritt es auf? (Frontend und Backend auf verschiedenen Domains/Ports).
-    *   Wer muss es lösen? **(Das Backend!)** – Kurze Erklärung der nötigen Response-Header.
-*   **Styling mit Tailwind CSS**
-    *   Philosophie: Utility-First CSS.
-    *   Vorteile: Sehr schnell zu schreiben, keine Namenskonflikte, standardisierte Design-Systeme.
-    *   Live-Demo: Die Todo-Liste mit ein paar Tailwind-Klassen stylen.
+    *   Wer muss es lösen? **(Das Backend!)** – Kurze Erklärung.
 
 **⏸️ Kurze Pause (14:30 - 14:45)**
 
-**Block 4: React in der Welt & Abschluss (14:45 - 16:00)**
-*   **React überall: Das Ökosystem**
-    *   **React Native:** Für native Mobile Apps (iOS & Android). Gleiche Konzepte, andere UI-Primitive (`<View>` statt `<div>`).
-    *   **Desktop-Apps:** Frameworks wie **Electron** (z.B. VS Code, Discord) und **Tauri** packen React-Apps in native Desktop-Anwendungen.
-    *   **Meta-Frameworks:**
-        *   **Next.js:** Das führende Framework für Production (Server-Side Rendering, Static Site Generation, Routing, Bundling). Heutiger Industriestandard für viele Projekte.
-        *   **Remix:** Ein weiteres modernes, Full-Stack-Framework.
-    *   **Zusammenfassung:** React ist nicht nur für Web-Apps, sondern eine Plattform für UI-Entwicklung auf vielen Zielplattformen.
-*   **Zusammenfassung der zwei Tage**
-*   **Ausblick & Weiterführende Themen:** Performance-Optimierung (`useMemo`, `useCallback`), weitere Hooks, Testing, State Management mit Redux Toolkit.
+**Block 4: Styling, React in der Welt & Abschluss (14:45 - 16:00)**
+*(Leicht gekürzt, um Zeit für WebSockets zu schaffen)*
+*   **Styling mit Tailwind CSS** (Kompakter Überblick mit Live-Demo)
+*   **React überall: Das Ökosystem** (React Native, Desktop-Apps, Next.js)
+*   **Zusammenfassung & Ausblick**
 *   **Abschluss & Feedback-Runde**
-    *   Offene Fragen klären.
-    *   Feedback zum Kurs einholen.
-    *   Empfehlungen für weitere Lernressourcen (Dokumentation, Tutorials, Communities).
