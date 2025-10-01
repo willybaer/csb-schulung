@@ -87,7 +87,6 @@
 **Gesamtdauer: 6 Stunden (inkl. Pausen)**
 
 **Block 1: Daten von außen holen & Global State & Professionelles Data Fetching mit React Query (oder TanStack Query) (09:00 - 10:30)**
-*(Unverändert)*
 *   **Rückblick & Fragen zu Tag 1.**
 *   **Kommunikation mit dem Backend: REST-APIs und `fetch`**
     *   Was ist eine API? Was ist REST?
@@ -125,7 +124,6 @@
 **🍕 Mittagspause (12:00 - 13:00)**
 
 **Block 3: Routing & Best Practices (13:00 - 14:30)**
-*(Angepasst, da WebSockets nun einen eigenen Block haben)*
 *   **Routing in einer SPA: React Router**
     *   Problem: Wie macht man "Seiten" in einer Single-Page-App?
     *   Konzept: Client-Side Routing.
@@ -140,7 +138,6 @@
 **⏸️ Kurze Pause (14:30 - 14:45)**
 
 **Block 4: Styling, React in der Welt & Abschluss (14:45 - 16:00)**
-*(Leicht gekürzt, um Zeit für WebSockets zu schaffen)*
 *   **Styling mit Tailwind CSS** (Kompakter Überblick mit Live-Demo)
 *   **React überall: Das Ökosystem** (React Native, Desktop-Apps, Next.js)
 *   **Zusammenfassung & Ausblick**
