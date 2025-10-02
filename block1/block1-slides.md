@@ -150,15 +150,23 @@ Beispiel einer klassichen HTML-Datei in PHP (HTML, CSS, PHP und Javascript Code 
 
 *💡 Diese Nachteile haben zu Lösungen wie Next.js (Server-Side Rendering) geführt.*
 
+https://nextjs.org/
+
+NextJs ist das bekannteste Fullstack-Framwork welches den kompletten Focus von Frontend und Backend auf React legt und die Vorteile beider Welten (SSR, SPA) in einem vereint.
+
 ---
 
 ## **Die Landkarte der Frameworks
 
 React ist nicht allein auf dem Markt.
 
+![Bild](frontend-framework-ranking.svg)
+
 ---
 
 ## **Vue.js
+
+https://vuejs.org/
 
 *   **Philosophie:** Progressiv und zugänglich
 *   **Stärken:** Einfacher Einstieg, klare Templating-Syntax, gute Dokumentation
@@ -166,6 +174,27 @@ React ist nicht allein auf dem Markt.
 
 > "Das freundliche Framework"
 
+Beispiel:
+
+```
+import { createApp, ref } from 'vue'
+
+createApp({
+  setup() {
+    return {
+      count: ref(0)
+    }
+  }
+}).mount('#app')
+```
+
+```
+<div id="app">
+  <button @click="count++">
+    Count is: {{ count }}
+  </button>
+</div>
+```
 ---
 
 ## **Angular
@@ -176,6 +205,10 @@ React ist nicht allein auf dem Markt.
 
 > "Das Enterprise-Framework"
 
+Beispiel-Projekt:
+
+https://v17.angular.io/generated/live-examples/getting-started/stackblitz.html
+
 ---
 
 ## **Svelte
@@ -185,6 +218,10 @@ React ist nicht allein auf dem Markt.
 *   **Einsatz:** Performance-kritische Anwendungen, Entwickler die Einfachheit lieben
 
 > "Das magische Framework"
+
+Beispiel-Projekt:
+
+https://svelte.dev/examples/hello-world
 
 ---
 
@@ -217,6 +254,10 @@ function Welcome(props) {
 ```
 
 **"Es ist nur JavaScript"** - Die Grundkonzepte (Komponenten, Props, State) sind schnell verstanden.
+
+**Frage an den Teilnehmer: Welches Framework spricht dich auf den ersten Blick am meisten an? Bei welchem Framework hast du das Gefühl einen schnellen Einstieg finden zu können**
+
+Wichtig hierbei ist: Wenn die Frontend-Entwicklung nicht Teil der täglichen Arbeit ist, sollte es ein Framework sein mit einer sehr steilen Lern- und Erfolgskurve (schneller Einstieg in die Entwicklung).
 
 ---
 
@@ -256,6 +297,53 @@ function Welcome(props) {
 *   **Desktop:** Electron, Tauri
 
 **Die gleichen Konzepte überall.**
+
+---
+
+## **Die Rolle von Bundlern: Webpack, Vite & Co.
+
+---
+## **Das Problem: Manuelle Abhängigkeitsverwaltung**
+
+**Stell dir vor 2015 vor...**
+
+```html
+<!-- index.html -->
+<script src="jquery.js"></script>
+<script src="component-a.js"></script>
+<script src="component-b.js"></script>
+<script src="utils.js"></script>
+<script src="main.js"></script>
+<!-- Vergessen wir eine Datei? Falsche Reihenfolge? -->
+
+---
+
+**Probleme:**
+*   ❌ **Reihenfolge-Abhängig** (Was kommt zuerst?)
+*   ❌ **Namespace-Konflikte** (Globale Variablen)
+*   ❌ **Performance** (Viele HTTP-Requests)
+*   ❌ **Wartungsalbtraum** bei wachsender App
+
+---
+## **Die Lösung: Module Bundler**
+
+**Bundler packen alles in optimierte Dateien**
+
+```
+📁 src/
+  → component-a.tsx
+  → component-b.tsx  
+  → utils.ts
+  → main.tsx
+
+🔨 [BUNDLER] (Webpack/Vite)
+
+📦 dist/
+  → optimized-bundle.js
+  → styles.css
+```
+
+---
 
 ---
 

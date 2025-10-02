@@ -28,8 +28,9 @@
         2.  **Flexibilität & Freiheit:** React ist eine Bibliothek für die UI, kein vollständiges Framework. Man kann sein eigenes State-Management, Routing etc. wählen („Ökosystem der Wahl“).
         3.  **Starke Community & Jobmarkt:** Größte Community, enorm viele Pakete, Lösungen und Ressourcen. Sehr hohe Nachfrage auf dem Arbeitsmarkt.
         4.  **Backing durch Meta (Facebook):** Wird in großen, produktiven Anwendungen (Facebook, Instagram, WhatsApp Web) eingesetzt, was Langzeitunterstützung garantiert.
-        5.  **"Learn once, write anywhere":** Das Konzept der Komponenten ermöglicht Wiederverwendung über Web, Mobile (React Native) und Desktop (Electron).
+        5.  **"Learn once, write anywhere":** Das Konzept der Komponenten ermöglicht Wiederverwendung über Web, Mobile (React Native) und Desktop (Electron).    
     *   **Fazit:** React ist ein Werkzeug, um SPAs effizient zu bauen. Seine Flexibilität und die massive Community haben es zum De-facto-Standard für viele Unternehmen gemacht.
+    *   **Bundler:** Die Rolle von Bundlern: Webpack, Vite & Co.
 
 **⏸️ Kurze Pause (10:00 - 10:15)**
 
