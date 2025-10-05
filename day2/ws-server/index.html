@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>WebSocket Client</title>
+</head>
+
+<body>
+  <script>
+    const ws = new WebSocket('ws://localhost:8080');
+
+    ws.onopen = () => console.log('Verbunden mit Server');
+    ws.onmessage = (event) => console.log('Vom Server:', event.data);
+    ws.onerror = (error) => console.error('Fehler:', error);
+
+    // Nachricht senden
+    // ws.send('Hallo Server!');
+  </script>
+</body>
+
+</html>
