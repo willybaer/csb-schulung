@@ -1,6 +1,3 @@
-Absolut! Hier ist die vollständige Präsentation für **Block 4: Interaktivität & State Management** mit vielen praktischen Code-Beispielen:
-
-```markdown
 ---
 ## **Interaktivität & State Management**
 
