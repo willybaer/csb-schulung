@@ -1,4 +1,3 @@
-
 ## **JavaScript & TypeScript Crashkurs**
 
 **Ziel: Die absoluten Essentials für React verstehen**
@@ -11,7 +10,7 @@
 
 **React ist "just JavaScript" - aber modernes JavaScript!**
 
-Um React zu verstehen, musst du zuerst die Sprache verstehen, in der es geschrieben ist.
+Um React zu verstehen, musst du zuerst die Sprache verstehen, in der sie geschrieben ist.
 
 **Heute lernen wir das Vokabular, bevor wir die Gedichte schreiben.**
 
@@ -123,6 +122,120 @@ const [count, setCount] = useState(0);
 ```
 
 ---
+## **Object Spread Operator `...`**
+
+**Objekte und Arrays kopieren und erweitern**
+
+```javascript
+const user = { name: "Peter", age: 25 };
+
+// Alte Weise - umständlich
+const updatedUser = {
+  name: user.name,
+  age: user.age,
+  city: "Berlin" // Neue Eigenschaft
+};
+
+// Moderne Weise - elegant
+const updatedUser = {
+  ...user,          // Alle Eigenschaften von user kopieren
+  city: "Berlin"    // Neue Eigenschaft hinzufügen
+};
+
+console.log(updatedUser);
+// { name: "Peter", age: 25, city: "Berlin" }
+```
+
+---
+## **Spread Operator für Updates**
+
+**WICHTIG für React State Updates!**
+
+```javascript
+const settings = { theme: "dark", notifications: true, language: "de" };
+
+// Nur eine Eigenschaft ändern
+const updatedSettings = {
+  ...settings,        // Alte Werte kopieren
+  theme: "light"      // theme überschreiben
+};
+
+// Mehrere Eigenschaften ändern
+const finalSettings = {
+  ...updatedSettings,
+  notifications: false,
+  language: "en"
+};
+
+console.log(finalSettings);
+// { theme: "light", notifications: false, language: "en" }
+```
+
+---
+## **Spread Operator mit Arrays**
+
+```javascript
+const fruits = ["apple", "banana"];
+
+// Am Ende hinzufügen
+const moreFruits = [...fruits, "orange"];
+// ["apple", "banana", "orange"]
+
+// Am Anfang hinzufügen
+const evenMoreFruits = ["kiwi", ...fruits];
+// ["kiwi", "apple", "banana"]
+
+// Arrays kombinieren
+const vegetables = ["carrot", "spinach"];
+const food = [...fruits, ...vegetables];
+// ["apple", "banana", "carrot", "spinach"]
+```
+
+---
+## **Warum Spread Operator in React so wichtig ist**
+
+**React State ist immutable (unveränderbar)!**
+
+```javascript
+// ❌ FALSCH - Direkt mutieren (funktioniert nicht in React)
+const [user, setUser] = useState({ name: "Peter", age: 25 });
+user.age = 26; // Direkte Mutation - React merkt keine Änderung!
+setUser(user); // Trigger kein Re-Render!
+
+// ✅ RICHTIG - Neues Objekt mit Spread Operator
+const [user, setUser] = useState({ name: "Peter", age: 25 });
+setUser({
+  ...user,    // Alten State kopieren
+  age: 26     // Nur age ändern
+}); // ✅ React merkt die Änderung und rendert neu!
+```
+
+---
+## **Praktisches Beispiel: Todo Updates**
+
+```javascript
+const [todos, setTodos] = useState([
+  { id: 1, text: "React lernen", completed: false },
+  { id: 2, text: "TypeScript üben", completed: true }
+]);
+
+// Todo als erledigt markieren
+const toggleTodo = (id) => {
+  setTodos(todos.map(todo => 
+    todo.id === id 
+      ? { ...todo, completed: !todo.completed } // Neues Objekt mit geändertem completed
+      : todo
+  ));
+};
+
+// Neues Todo hinzufügen
+const addTodo = (text) => {
+  const newTodo = { id: Date.now(), text, completed: false };
+  setTodos([...todos, newTodo]); // Neues Array mit neuem Todo
+};
+```
+
+---
 ## **Modul-System: `import` & `export`**
 
 **Wie Code-Teile miteinander kommunizieren**
@@ -227,7 +340,7 @@ Frage an den Kursteilnehmer:
 
 Findest du den Fehler in folgendem Funktionsaufruf?
 
-```
+```javascript
 function test(a) {
   return a.name * 2;
 }
@@ -373,7 +486,7 @@ const todo: Todo = {
 
 **Was du mitnimmst:**
 - ✅ `const`/`let`, Arrow Functions, Template Literals
-- ✅ Destructuring, Modules
+- ✅ **Destructuring, Spread Operator**, Modules
 - ✅ **Wichtig:** `.map()` und `.filter()`
 - ✅ TypeScript Grundtypen und Interfaces
 - ✅ **Ziel:** Den roten Unterstrich verstehen und beheben
@@ -387,3 +500,12 @@ const todo: Todo = {
 
 **Danach:** Wir starten mit unserer ersten React-Komponente!
 ```
+
+Die wichtigsten Ergänzungen:
+
+1. **Object Spread Operator Grundlagen** - Wie man Objekte kopiert und erweitert
+2. **Spread Operator mit Arrays** - Für immutable Array-Updates
+3. **React State Zusammenhang** - Warum Spread Operator für State Updates essentiell ist
+4. **Praktisches Todo-Beispiel** - Konkrete Anwendung in React
+
+Der Spread Operator ist **kritisch wichtig** für React, da er das Prinzip der **Immutability** (Unveränderbarkeit) ermöglicht, das React für performante Updates benötigt!
