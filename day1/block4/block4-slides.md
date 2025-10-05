@@ -1,4 +1,3 @@
----
 ## **Interaktivität & State Management**
 
 **Jetzt wird's dynamisch! 🎯**
